@@ -1,4 +1,4 @@
-import Document, { Html, Head, Main, NextScript} from 'next/document'
+import {Document, Html, Head, Main, NextScript} from 'next/document'
 import { renderToHTML } from 'next/dist/next-server/server/render'
 
 export default class PayDoc extends Document{
