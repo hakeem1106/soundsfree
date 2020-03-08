@@ -1,11 +1,7 @@
-import {Document, Html, Head, Main, NextScript} from 'next/document'
-import { renderToHTML } from 'next/dist/next-server/server/render'
+import Document, {Html, Head, Main, NextScript} from 'next/document'
+
 
 export default class PayDoc extends Document{
-    static async getInitialProps(ctx){
-        const initialProps = await Document.getInitialProps(ctx)
-        return {...initialProps}
-    }
     render(){
         return(
             <Html lang="en">

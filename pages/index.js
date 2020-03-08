@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-import Layout from '../soundsfree/components/layoutents/layout'
+import Layout from '../components/layout'
 import fetch from 'isomorphic-unfetch'
 
 
