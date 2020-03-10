@@ -1,6 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import Layout from '../components/layout'
+import fetch from 'isomorphic-unfetch'
 
 
 
@@ -8,10 +9,23 @@ import Layout from '../components/layout'
 class Home extends React.Component{
 constructor(props){
     super(props)
-    this.state={}
+    this.state={
+      rates: []
+    }
 }
+async componentDidMount(){
 
-
+}
+fromBack=async()=>{
+  await fetch(`./api/getrates`)
+    .then(res=> res.json())
+    .then(data=>{
+      this.setState({
+        rates: Object.entries(data.rates)
+      })
+    })
+    .catch(err=> console.log(err))
+}
  render(){
 
 return(
@@ -19,7 +33,7 @@ return(
 
   <Layout>
       <div>
-      works
+      {this.state.rates}
       </div>
       
     
