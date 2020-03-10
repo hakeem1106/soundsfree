@@ -10,11 +10,11 @@ class Home extends React.Component{
 constructor(props){
     super(props)
     this.state={
-      rates: []
+      rates: {}
     }
 }
 async componentDidMount(){
-
+this.fromBack()
 }
 fromBack=async()=>{
   await fetch(`./api/getrates`)
