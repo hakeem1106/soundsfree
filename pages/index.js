@@ -10,7 +10,7 @@ class Home extends React.Component{
 constructor(props){
     super(props)
     this.state={
-      rates: {}
+      rates: []
     }
 }
 async componentDidMount(){
@@ -21,7 +21,7 @@ fromBack=async()=>{
     .then(res=> res.json())
     .then(data=>{
       this.setState({
-        rates: Object.entries(data.rates)
+        rates: data.rates
       })
     })
     .catch(err=> console.log(err))
@@ -33,7 +33,11 @@ return(
 
   <Layout>
       <div>
-      {this.state.rates}
+      {this.state.rates.map(monies=>{
+        <div>
+        {monies.AED}
+        </div>
+      })}
       </div>
       
     
