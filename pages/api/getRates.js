@@ -1,5 +1,4 @@
 require('dotenv').config();
-
 const fetch = require('node-fetch')
 
 module.exports = (req, res) => {
@@ -10,7 +9,7 @@ module.exports = (req, res) => {
   })
   */
 
-  const getRates = async()=>{  
+  const getRates = async(event)=>{  
      
     await fetch(`http://data.fixer.io/api/latest?access_key=${process.env.API_KEY}`)
     .then(res=> res.json())

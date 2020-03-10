@@ -13,15 +13,17 @@ constructor(props){
       rates: []
     }
 }
-async componentDidMount(){
-this.fromBack()
+componentDidMount(){
+this.fromBack = this.fromBack.bind(this)
 }
-fromBack=async()=>{
-  await fetch(`./api/getrates`)
+
+fromBack=async(event)=>{
+    event.preventDefault()
+  await fetch(`./api/getRates`)
     .then(res=> res.json())
     .then(data=>{
       this.setState({
-        rates: data.rates
+        rates: data
       })
     })
     .catch(err=> console.log(err))
@@ -33,11 +35,7 @@ return(
 
   <Layout>
       <div>
-      {this.state.rates.map(monies=>{
-        <div>
-        {monies.AED}
-        </div>
-      })}
+     {this.state.rates}
       </div>
       
     
