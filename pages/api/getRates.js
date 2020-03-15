@@ -13,7 +13,9 @@ module.exports = (req, res) => {
      
     await fetch(`http://data.fixer.io/api/latest?access_key=${process.env.API_KEY}`)
     .then(res=> res.json({
-        body: res.rates
+        body: JSON.stringify({
+            rates: res.rates
+        })
     }))
     .then(data=>console.log(data))
     .catch(err=> console.log(err))
