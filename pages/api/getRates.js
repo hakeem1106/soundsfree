@@ -9,10 +9,12 @@ module.exports = (req, res) => {
   })
   */
 
-  const getRates = async(event)=>{  
+  const getRates = async()=>{  
      
     await fetch(`http://data.fixer.io/api/latest?access_key=${process.env.API_KEY}`)
-    .then(res=> res.json())
+    .then(res=> res.json({
+        body: res.rates
+    }))
     .then(data=>console.log(data))
     .catch(err=> console.log(err))
 /*  

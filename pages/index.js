@@ -13,21 +13,24 @@ constructor(props){
       rates: []
     }
 }
-componentDidMount(){
-this.fromBack = this.fromBack.bind(this)
-}
-
-fromBack=async(event)=>{
-    event.preventDefault()
-  await fetch(`./api/getRates`)
+async componentDidMount(){
+    await fetch(`/api/getRates`)
     .then(res=> res.json())
     .then(data=>{
       this.setState({
-        rates: data
-      })
+        rates: [data.rates]
+      },
+      console.log(this.state.rates)
+      )
+      
     })
     .catch(err=> console.log(err))
+
+
 }
+
+
+  
  render(){
 
 return(
@@ -35,7 +38,12 @@ return(
 
   <Layout>
       <div>
-     {this.state.rates}
+     {this.state.rates.map(r=>{
+        {r}
+        
+        
+
+     })}
       </div>
       
     
