@@ -14,11 +14,11 @@ constructor(props){
     }
 }
 async componentDidMount(){
-    await fetch(`/api/getRates`)
+    await fetch(`./api/getRates`)
     .then(res=> res.json())
     .then(data=>{
       this.setState({
-        rates: [data.rates]
+        rates: [data]
       },
       console.log(this.state.rates)
       )

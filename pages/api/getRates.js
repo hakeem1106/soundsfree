@@ -9,15 +9,21 @@ module.exports = (req, res) => {
   })
   */
 
-  const getRates = async()=>{  
+  const getRates = async()=>{ 
+    
      
-    await fetch(`http://data.fixer.io/api/latest?access_key=${process.env.API_KEY}`)
-    .then(res=> res.json({
-        body: JSON.stringify({
-            rates: res.rates
-        })
+    await fetch(`http://api.bitcoincharts.com/v1/markets.json`)
+    .then(res=> res.json())
+    .then(data=> res.setHeaders({
+        
+            method: 'POST',
+            headers:{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
     }))
-    .then(data=>console.log(data))
+    
     .catch(err=> console.log(err))
 /*  
      await fetch(url)
