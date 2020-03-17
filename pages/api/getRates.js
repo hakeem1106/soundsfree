@@ -13,16 +13,8 @@ module.exports = (req, res) => {
     
      
     await fetch(`http://api.bitcoincharts.com/v1/markets.json`)
-    .then(res=> res.json())
-    .then(data=> res.setHeaders({
-        
-            method: 'POST',
-            headers:{
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-    }))
+    .then(res=>  res.json())
+    .then(data=> body.json(data))
     
     .catch(err=> console.log(err))
 /*  
